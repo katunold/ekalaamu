@@ -11,6 +11,13 @@ export const authServiceSpy = createSpyObj('AuthService', [
   'authState'
 ]);
 
+export const toasterServiceSpy = createSpyObj('ToasterService', [
+  'onSuccess',
+  'onFailure',
+]);
+
+export const loginServiceSpy = createSpyObj('LoginService',['login'])
+
 export const socialAuthServiceSpy = createSpyObj('SocialAuthService', [
   'authenticate',
   'twitterAuth'
