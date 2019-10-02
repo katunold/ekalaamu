@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { LoginService}  from "./service/login.service";
-import { ToasterService} from "../../shared/services/toaster.service";
+import { Router } from '@angular/router';;
+import { ToasterService} from "../../../shared/services/toaster.service";
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,10 +16,10 @@ export class LoginComponent implements OnInit {
   passwordCtrl: FormControl;
   isSubmitted  =  false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private authService: LoginService, private toasterService: ToasterService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private authService: AuthService, private toasterService: ToasterService) { }
 
   ngOnInit() {
-    this.emailCtrl = new FormControl('Email', {validators:
+    this.emailCtrl = new FormControl('', {validators:
         [Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]
       ,updateOn: 'blur'
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
     this.authService.login(this.loginForm.value).subscribe((result)=>{
       this.toasterService.onSuccess(result.success)
+      this.router.navigate(['/'])
     },
         err => this.toasterService.onFailure(err.error.Errors)
   )

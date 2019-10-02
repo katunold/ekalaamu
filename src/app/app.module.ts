@@ -17,11 +17,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptorService } from './shared/interceptors/error/error-interceptor.service';
 import { LandingPageComponent } from 'src/app/components/landing-page/landing-page.component';
 import { AuthModule } from './auth/auth.module';
-import { AuthComponent } from './auth/auth.component';
-
-import { LoginComponent } from './components/login/login.component';
-import { LoginService } from "./components/login/service/login.service";
 import { ToasterService} from "./shared/services/toaster.service";
+import { AuthService } from './auth/services/auth.service';
 
 const config = new AuthServiceConfig([
   {
@@ -46,9 +43,7 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     LandingPageComponent,
-    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +58,7 @@ export function provideConfig() {
     MaterialModule,
     BrowserAnimationsModule,
   ],
-  providers: [LoginService, ToasterService,
+  providers: [AuthService, ToasterService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig

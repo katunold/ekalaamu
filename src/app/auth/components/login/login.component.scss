@@ -7,16 +7,26 @@ $body-color: #CDC6C6;
   .login-header{
     font-family: Lato;
     font-style: normal;
-    font-weight:lighter;
-    font-size: 14px;
+    font-weight:700;
+    font-size: 15px;
     color: #A1A1A1;
+    a {
+      color: #a1a1a1;
+      text-decoration: none;
+      transition: .4s;
+    }
+  
+    a:hover {
+      color: #000;
+      transition: .4s;
+    }
   }
   body {
     text-align: center;
 
     form {
       display: inline;
-      width:50% ;
+      width:50%;
 
       input {
         padding-left: 2%;
@@ -50,13 +60,13 @@ $body-color: #CDC6C6;
           color: white;
         }
       }
+    }
+    .img {
+      display: block;
+     margin-left: 42%;
+    
+    }
 
-    }
-    img {
-      padding: 1%;
-      width: 5%;
-      height: 5%;
-    }
     .help-block {
       color: #f20000;
     }

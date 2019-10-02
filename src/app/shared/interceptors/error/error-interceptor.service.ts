@@ -4,9 +4,13 @@ import {Observable, ObservableInput, throwError} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { ToasterService } from '../../services/toaster.service';
+import { environment } from '../../../../environments/environment';
 
 const errorHandler = (toaster: ToasterService) => (error: any, caught: Observable<any>): ObservableInput<any> => {
-  console.log(error);
+  if(error.url===`${environment.baseUrl}/login`){
+    toaster.onFailure(error.error.Errors);
+    return []
+  }
   toaster.onFailure(error.error.errors[0]);
   return [];
 };

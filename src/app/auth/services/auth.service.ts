@@ -26,4 +26,11 @@ export class AuthService {
     }
     return user;
   }))
+  public login = (user) => this.http.post(`${environment.baseUrl}/login`, user).pipe(map( (result: any) => {
+    if (result.token) {
+      // this.currentUserSubject.next({ username: "",token: result.token });
+      sessionStorage.setItem(`token`, JSON.stringify(user.token));
+    }
+    return result;
+  }))
 }
