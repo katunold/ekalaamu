@@ -2,7 +2,7 @@
   <div class="signup">
     <h1 class="title">Ekalaamu</h1>
     <p class="holder-text">
-      Already have an account? <a href="/auth/login">Log In</a>
+      Already have an account? <a routerLink="/auth/login">Log In</a>
     </p>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" fxLayout="column">
       <mat-form-field floatLabel="never">
@@ -10,10 +10,10 @@
           class="form-control"
           matInput
           placeholder="First Name"
-          formControlName="firstName"
+          formControlName="firstname"
           [errorStateMatcher]="matcher"
         />
-        <mat-error *ngIf="form.firstName.errors?.required">
+        <mat-error *ngIf="form.firstname.errors?.required">
           * Required
         </mat-error>
       </mat-form-field>
@@ -23,10 +23,10 @@
           class="form-control"
           matInput
           placeholder="Last Name"
-          formControlName="lastName"
+          formControlName="lastname"
           [errorStateMatcher]="matcher"
         />
-        <mat-error *ngIf="form.lastName.errors?.required">
+        <mat-error *ngIf="form.lastname.errors?.required">
           * Required
         </mat-error>
       </mat-form-field>

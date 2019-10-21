@@ -1,57 +1,65 @@
+<div class="signup-container">
+  <div class="signup">
+    <h1 class="title">
+      Ekalaamu
+    </h1>
+    <p class="holder-text">
+      <a routerLink="/auth/signup">Or Create a new Account</a>
+    </p>
 
-<h1 style="text-align:center; font-family: Noteworthy" >
- Ekalaamu
-</h1>
-<div class="login">
-    <h5 style="text-align:center" class="login-header"><a href="/auth/signup">Or Create a new Account</a></h5>
-    <body>
-    <form [formGroup]="loginForm" class="login-container" (ngSubmit)="login()">
-      <div>
-      <input
-        type="email"
-        id="email"
-        placeholder="Email"
-        email="true"
-        class="form-control"
-        [formControl]="emailCtrl"
-      >
-      </div>
-    <div id="error" *ngIf="(emailCtrl.dirty || emailCtrl.touched) && emailCtrl.errors"
-         class="alert alert-danger">
-      <!--emailCtrl.errors?.required-->
-      <div *ngIf="emailCtrl.errors.required">
-        *email is required.
-      </div>
-      <div *ngIf="emailCtrl.errors.pattern">
-        *enter valid email address
-      </div>
-    </div>
-<div>
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        class="form-control"
-        [formControl]="passwordCtrl"
-      >
-</div>
-      <div id="error" *ngIf="(passwordCtrl.dirty || passwordCtrl.touched) && passwordCtrl.errors"
-           class="alert alert-danger">
-        <!--emailCtrl.errors?.required-->
-        <div *ngIf="passwordCtrl.errors.required">
-          *password is required.
+    <form [formGroup]="loginForm" (ngSubmit)="login()" fxLayout="column">
+      <mat-form-field floatLabel="never">
+        <input
+          type="email"
+          matInput
+          id="email"
+          placeholder="Email"
+          email="true"
+          class="form-control"
+          [formControl]="emailCtrl"
+        />
+
+        <div
+          id="error"
+          *ngIf="(emailCtrl.dirty || emailCtrl.touched) && emailCtrl.errors"
+          class="alert alert-danger"
+        >
+          <mat-error *ngIf="emailCtrl.errors.required">
+            *email is required.
+          </mat-error>
+          <mat-error *ngIf="emailCtrl.errors.pattern">
+            *enter valid email address
+          </mat-error>
         </div>
-        <div *ngIf="passwordCtrl.errors.minlength">
-          *password must contain 3 or more characters
+      </mat-form-field>
+      <mat-form-field floatLabel="never">
+        <input
+          type="password"
+          matInput
+          id="password"
+          placeholder="Password"
+          class="form-control"
+          [formControl]="passwordCtrl"
+        />
+        <div
+          id="error"
+          *ngIf="
+            (passwordCtrl.dirty || passwordCtrl.touched) && passwordCtrl.errors
+          "
+          class="alert alert-danger"
+        >
+          <mat-error *ngIf="passwordCtrl.errors.required">
+            *password is required.
+          </mat-error>
+          <mat-error *ngIf="passwordCtrl.errors.minlength">
+            *password must contain 3 or more characters
+          </mat-error>
         </div>
-      </div>
-      <div class="wrapper">
-        <button mat-button class="button" type="submit" [disabled]="loginForm.invalid" mat-flat-button>Login</button>
-      </div>
-      </form>
-        <p>or login with</p>
-        <div class="img">
-       <app-social-auth></app-social-auth>
-       </div>
-    </body>
+      </mat-form-field>
+      <button [disabled]="loginForm.invalid" mat-flat-button>Login</button>
+    </form>
+    <p class="holder-text">or login with</p>
+    <app-social-auth></app-social-auth>
+    <div></div>
+  </div>
 </div>

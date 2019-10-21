@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';;
-import { ToasterService} from "../../../shared/services/toaster.service";
+import { Router } from '@angular/router';
+import { ToasterService} from '../../../shared/services/toaster.service';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['../signup/signup.component.scss']
 })
 export class LoginComponent implements OnInit {
 
@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
     this.passwordCtrl = new FormControl('', {validators:
         [Validators.required,
           Validators.minLength(3)
-        ],updateOn: 'blur'})
-
+        ]})
 
     this.loginForm  =  new FormGroup({
       email: this.emailCtrl,
@@ -37,12 +36,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-    this.authService.login(this.loginForm.value).subscribe((result)=>{
+    this.authService.login(this.loginForm.value).subscribe((result) => {
       this.toasterService.onSuccess(result.success)
-      this.router.navigate(['/'])
+      this.router.navigate(['/']);
     },
-        err => this.toasterService.onFailure(err.error.Errors)
+    err => this.toasterService.onFailure(err.error)
+
   )
 
   }
