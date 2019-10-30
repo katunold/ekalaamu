@@ -7,14 +7,18 @@ import { MaterialModule } from '../shared/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocialAuthComponent } from './components/social-auth/social-auth.component';
 import { RouterModule } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
+import { AuthComponent } from './auth.component';
 
 @NgModule({
   declarations: [
+    AuthComponent,
     SignupComponent,
     SocialAuthComponent,
+    LoginComponent
   ],
   imports: [
-    RouterModule.forChild(AuthRoutingModule),
+    RouterModule.forRoot(AuthRoutingModule),
     CommonModule,
     FormsModule,
     ReactiveFormsModule,

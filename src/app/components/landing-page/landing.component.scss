@@ -195,7 +195,11 @@ section {
           font-style: normal;
           font-weight: 700;
           font-size: 15px;
-          color: #000;
+          a {
+            color: #000;
+            text-decoration: none;
+            transition: .4s;
+          }
         }
       }
     }

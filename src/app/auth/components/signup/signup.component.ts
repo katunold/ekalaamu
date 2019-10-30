@@ -3,6 +3,7 @@ import { FormControl, FormGroupDirective, NgForm, Validators, FormBuilder, FormG
 import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ToasterService } from '../../../shared/services/toaster.service'
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,12 +24,12 @@ export class SignupComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   user: any;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private toasterService: ToasterService) { }
 
   ngOnInit() {
     this.signupForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
@@ -39,9 +40,10 @@ export class SignupComponent implements OnInit {
   onSubmit = () => {
     this.submitted = true;
     this.authService.signup(this.signupForm.value).subscribe(res => {
-      if (res.token) {
-        this.router.navigate(['/']);
-      }
+      if(res.message)
+        this.toasterService.onSuccess(res.message);
+        this.router.navigate(['/auth/login'])
+      
     });
 
   }

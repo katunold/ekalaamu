@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,8 +17,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptorService } from './shared/interceptors/error/error-interceptor.service';
 import { LandingPageComponent } from 'src/app/components/landing-page/landing-page.component';
 import { AuthModule } from './auth/auth.module';
-import { AuthComponent } from './auth/auth.component';
-
+import { ToasterService} from "./shared/services/toaster.service";
+import { AuthService } from './auth/services/auth.service';
 
 const config = new AuthServiceConfig([
   {
@@ -42,12 +43,13 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent,
     LandingPageComponent,
   ],
   imports: [
     BrowserModule,
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
     AppRoutingModule,
@@ -56,7 +58,7 @@ export function provideConfig() {
     MaterialModule,
     BrowserAnimationsModule,
   ],
-  providers: [
+  providers: [AuthService, ToasterService,
     {
       provide: AuthServiceConfig,
       useFactory: provideConfig
@@ -65,7 +67,7 @@ export function provideConfig() {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptorService,
       multi: true,
-    }
+    } 
   ],
   entryComponents: [],
   bootstrap: [AppComponent]
