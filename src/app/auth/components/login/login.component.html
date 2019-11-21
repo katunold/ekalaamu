@@ -60,6 +60,12 @@
     </form>
     <p class="holder-text">or login with</p>
     <app-social-auth></app-social-auth>
+    <div (mouseover)="hover=true" (mouseleave)="hover=false">
+    <p  class="holder-text" [ngStyle]="{color: hover==true  ? 'black' : 'grey' }" (click)="forgotPasswordDialog()">
+     forgot password?
+     </p>
+    </div>
+
     <div></div>
   </div>
 </div>

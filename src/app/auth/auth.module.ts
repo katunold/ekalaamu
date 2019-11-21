@@ -9,13 +9,15 @@ import { SocialAuthComponent } from './components/social-auth/social-auth.compon
 import { RouterModule } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AuthComponent } from './auth.component';
+import { PasswordResetComponent } from './components/password-reset/password-reset.component';
 
 @NgModule({
   declarations: [
     AuthComponent,
     SignupComponent,
     SocialAuthComponent,
-    LoginComponent
+    LoginComponent,
+    PasswordResetComponent
   ],
   imports: [
     RouterModule.forRoot(AuthRoutingModule),
