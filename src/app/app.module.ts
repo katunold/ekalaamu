@@ -19,6 +19,9 @@ import { LandingPageComponent } from 'src/app/components/landing-page/landing-pa
 import { AuthModule } from './auth/auth.module';
 import { ToasterService} from "./shared/services/toaster.service";
 import { AuthService } from './auth/services/auth.service';
+import { PasswordResetComponent } from './auth/components/password-reset/password-reset.component';
+
+
 
 const config = new AuthServiceConfig([
   {
@@ -69,7 +72,7 @@ export function provideConfig() {
       multi: true,
     } 
   ],
-  entryComponents: [],
+  entryComponents: [  PasswordResetComponent],
   bootstrap: [AppComponent]
 })
 

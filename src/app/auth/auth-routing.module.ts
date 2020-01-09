@@ -15,7 +15,7 @@ export const AuthRoutingModule: Routes = [
       {
         path: 'login',
         component: LoginComponent,
-      }
+      },
     ],
   }
 ];

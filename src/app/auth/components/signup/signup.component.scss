@@ -9,7 +9,7 @@ $gray: #9c9c9c;
 
   .signup {
     width: 350px;
-    height: 550px;
+    // height: 550px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,6 +23,7 @@ $gray: #9c9c9c;
       font-size: 30px;
       padding: 0 !important;
       color: #000000;
+
     }
 
     .holder-text {
@@ -91,3 +92,8 @@ $gray: #9c9c9c;
   cursor: not-allowed !important;
   color: #747272 !important;
 }
+
+// ::ng-deep .mat-dialog-container {
+//   width: 600px;
+//   height: 300px
+// }
